@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-8  col-md-12 border shadow producto-box text-center" *ngIf='item'>
+            <h3>{{item.nombre}}</h3>
+            <img [src]="item.url" [alt]="item.nombre">
+            <p>{{item.descripcion}}</p>
+            <br>
+            <p class="producto-precio"><i class="fas fa-tags"></i> {{item.precio}} ARS</p>
+            <p class="producto-cantidad"> Cantidad <i class="fas fa-minus" (click)="sumaResta('resta')"></i> {{cantidad}} <i class="fas fa-plus" (click)="sumaResta('suma')"></i></p>
+            <div class="colores">
+                <span>Colores disponibles: </span>
+                <i *ngFor='let color of item.colores' class="fas fa-circle"></i>
+                <span class="tooltiptext">Tooltip text</span>
+            </div>
+            <button class="btn btn-primary btn-lg mt-5" (click)="addcarrito()" routerLink='/carrito'>Agregar al carrito</button>
+        </div>
+
+        <div class="col-lg-8 my-5 text-center" *ngIf='!item'>
+            <h3>Ups, ha desaparecido el producto :(</h3>
+        </div>
+    </div>
+</div>

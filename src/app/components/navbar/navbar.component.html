@@ -1,0 +1,34 @@
+ <header class="top-header">
+    <div class="container">
+      <nav class="navbar navbar-dark ">
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"  style="color: white;"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse mr-auto" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item ">
+              <a class="nav-link" routerLink=''>Inicio <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink='/tienda'>Tienda</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink='/contacto'>Contacto</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="logo ">
+          <!-- <a class="navbar-brand logo" routerLink=''>Rock's</a> -->
+          <a routerLink='' class="logo mr-auto"><img src="assets/img/ROKsLogo.png" alt="" class="img-fluid"></a>
+        </div>
+
+        <span class="navbar-text" routerLink='/carrito'>
+          {{carritoService.totalprod}} | <i class="fab fa-opencart"></i>
+        </span>
+
+      </nav>
+    </div>
+  </header>
