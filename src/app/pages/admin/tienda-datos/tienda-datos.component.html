@@ -1,0 +1,70 @@
+<div class="jumbotron info-tienda">
+    <a (click)="toggleEditar()" class="float-right"><i class="far fa-edit"></i></a>
+    <section *ngIf='!this.editar'>
+    <h3>{{tienda.tiendaInfo.nombre}}</h3>
+    <p>Twitter: {{tienda.tiendaInfo.twitter}}</p>
+    <p>instagram: {{tienda.tiendaInfo.instagram}}</p>
+    <p>Facebook: {{tienda.tiendaInfo.facebook }}</p>
+    <p>WhatsApp: {{tienda.tiendaInfo.wa}}</p>
+    <p>Email: {{tienda.tiendaInfo.mail}}</p>
+    <p>Telefono: {{tienda.tiendaInfo.tlf}}</p>
+    <p>Direccion: {{tienda.tiendaInfo.direccion}}</p>
+    <p>Mensaje de entrada: {{tienda.tiendaInfo.msj}}</p>
+    <br>
+    <br>
+    </section>
+    <form action="" *ngIf='this.editar' class="mt-5">
+        <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="nmbre">Nombre de la tienda</span>
+            </div>
+            <input type="text" class="form-control" placeholder="Nombre" [value]='tienda.tiendaInfo.nombre'>
+        </div>
+        <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="tw">Twitter</span>
+            </div>
+            <input type="text" class="form-control" placeholder="Twitter" [value]='tienda.tiendaInfo.twitter'>
+
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="ig">instagram</span>
+              </div>
+            <input type="text" class="form-control" placeholder="Istagram" [value]='tienda.tiendaInfo.instagram'>
+        </div>
+        <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="fb">Facebook</span>
+            </div>
+            <input type="text" class="form-control" placeholder="Facebook" [value]='tienda.tiendaInfo.facebook'>
+
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="wa">WhatsApp</span>
+              </div>
+            <input type="text" class="form-control" placeholder="WhatsApp" [value]='tienda.tiendaInfo.wa'>
+        </div>
+        <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="mail">Email</span>
+            </div>
+            <input type="text" class="form-control" placeholder="Email" [value]='tienda.tiendaInfo.mail'>
+
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="tlf">Telefono</span>
+              </div>
+            <input type="text" class="form-control" placeholder="Telefono" [value]='tienda.tiendaInfo.tlf'>
+        </div>
+        <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="direccion">Direccion</span>
+            </div>
+            <input type="text" class="form-control" placeholder="Direccion" [value]='tienda.tiendaInfo.direccion'>
+        </div>
+        <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="nmbre">Mensaje</span>
+            </div>
+            <input type="textarea" class="form-control" placeholder="Mensaje de Bienvenida" [value]='tienda.tiendaInfo.msj'>
+        </div>
+    </form>
+
+</div>

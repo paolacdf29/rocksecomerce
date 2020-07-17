@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { ProductosService } from '../../services/productos.service';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-shop',
@@ -9,18 +10,24 @@ import { ProductosService } from '../../services/productos.service';
 export class ShopComponent implements OnInit {
 
   filtroCategoria: string = '';
+  modalRef: BsModalRef;
 
-  constructor(public productosSer: ProductosService) { }
+  constructor(public productosSer: ProductosService,
+              private modalService: BsModalService) { }
 
   ngOnInit() {
-    if(this.productosSer.productosdisp.length == 0){
-      this.productosSer.getproductos();
-    }
+    this.productosSer.getproductos();
+    
   }
 
   filtrarcar(categoria){
     this.filtroCategoria = categoria;
 
+  }
+
+  showModal(template: TemplateRef<any>){
+
+    this.modalRef = this.modalService.show(template);
   }
 
 }

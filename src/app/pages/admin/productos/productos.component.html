@@ -1,0 +1,12 @@
+<div class="card producto-info my-5" *ngFor='let item of this.productoSer.productosdisp'>
+    <div class="card-header">
+       <span> Nombre del producto: {{item.nombre}} </span>
+        <a routerLink='/admin/editar/producto/1'><i class="far fa-edit"></i></a>
+    </div>
+    <div class="card-body">
+        <img [src]="item.img" [alt]="item.nombre" class="img-fluid">
+        <p>Descripción: {{item.descripcion}} </p>
+        <br>
+        <span><i class="fas fa-tags"></i> Precio: {{item.precio}} ARS</span>
+    </div>
+</div>

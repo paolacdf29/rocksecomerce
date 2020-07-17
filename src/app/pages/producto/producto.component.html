@@ -2,7 +2,7 @@
     <div class="row justify-content-center">
         <div class="col-lg-8  col-md-12 border shadow producto-box text-center" *ngIf='item'>
             <h3>{{item.nombre}}</h3>
-            <img [src]="item.url" [alt]="item.nombre">
+            <img [src]="item.img" [alt]="item.nombre">
             <p>{{item.descripcion}}</p>
             <br>
             <p class="producto-precio"><i class="fas fa-tags"></i> {{item.precio}} ARS</p>

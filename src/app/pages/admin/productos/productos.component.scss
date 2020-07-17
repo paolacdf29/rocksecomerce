@@ -1,0 +1,19 @@
+.producto-info {
+    .card-header{
+        i{
+            float: right;
+        }
+    }
+    .card-body{
+        img{
+            height: 200px;
+            width: 200px;
+            object-fit: cover;
+            float: left;
+            margin: 0 20px 0 20px;
+        }
+        p span i {
+            right: 20px;
+        }
+    }
+}

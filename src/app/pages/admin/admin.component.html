@@ -1,1 +1,45 @@
-<p>admin works!</p>
+<div class="container-fluid">
+    <div class="row justify-coneten-center">
+        <div class="col-2 adminMenu bg-light border py-5">
+            <div class="titulo mb-2">
+                <h5><i class="fas fa-user"></i> Dashboard </h5>
+            </div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <p routerLink='/admin/dashboard'> Ventas </p>
+                </li>
+                <li class='nav-item'>
+                    <p routerLink='/admin/productos'> Productos </p>
+                </li>
+                <li class='nav-item'>
+                    <p routerLink='/admin/reportes'> Reportes </p>
+                </li>
+            </ul>
+
+            <div class="titulo mt-5 mb-2">
+                <h5><i class="fas fa-store-alt"></i> Mi tienda</h5>
+            </div>
+            <ul class='nav flex-column'>
+                <li class='nav-item'>
+                    <p routerLink='/admin/tienda-datos' > Datos de contacto</p>
+                </li>
+                <li class='nav-item'>
+                    <p routerLink='/admin/tienda-brand' > Brand</p>
+                </li>
+                <li class='nav-item'>
+                    <p routerLink='/admin/money' > Datos de pago</p>
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-8 adminDashboard pt-5">
+            <div class="alert alert-dark">
+                Admin / Dashboar / Ventas
+            </div>
+
+            <router-outlet></router-outlet>
+
+        </div>
+
+    </div>
+</div>

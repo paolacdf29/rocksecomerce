@@ -1,19 +1,27 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { producto, porden } from '../interfaces/interfaces';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CarritoService {
 
-  productos: any[] = [];
+  productos: porden[] = [];
   totalprod: number = 0;
-  subtotal: number = 0; 
+  subtotal: number = 0;
+  comentarios: string;
 
   constructor(private http: HttpClient) { }
 
-  agregarProducto(producto, cantidad){
-    this.productos.push(producto);
+  agregarProducto(producto: producto, cantidad: number){
+    const porden = {
+      id: "cloudFirestoreId",
+      nombre: producto.nombre,
+      cantidad: cantidad,
+      precio: producto.precio
+    }
+    this.productos.push(porden);
     this.subtotal += producto.precio * cantidad;
     this.totalprod += cantidad;
   };
@@ -22,9 +30,9 @@ export class CarritoService {
     return this.productos;
   }
   
-  eliminarProducto(index){
-    this.subtotal -= this.productos[index].precio;
-    this.totalprod -= 1;
+  eliminarProducto(index: number){
+    this.subtotal -= this.productos[index].precio * this.productos[index].cantidad;
+    this.totalprod -= this.productos[index].cantidad;
     this.productos.splice(index, 1);
   }
 

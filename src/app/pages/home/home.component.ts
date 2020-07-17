@@ -11,9 +11,7 @@ export class HomeComponent implements OnInit {
   constructor(public prodServ: ProductosService) { }
 
   ngOnInit() {
-    if(this.prodServ.productosdisp.length == 0){
-      this.prodServ.getproductos();
-    }
+    this.prodServ.getproductos();
   }
 
 }

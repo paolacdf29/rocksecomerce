@@ -1,74 +1,66 @@
 [
     {
-        "nombre": "pulsera1",
+        "nombre": "Rocks Jade",
         "descripcion": "pulsera con piedrita muy bonita",
         "colores": ["color:red;", "yellow", "blue"],
-        "url": "assets/img/portfolio/portfolio-1.jpg",
+        "img": "assets/img/portfolio/portfolio-1.jpg",
         "precio": 700,
         "categoria": "Hombre"
     },
     {
-        "nombre": "cadena",
+        "nombre": "Dark Ocean",
         "descripcion": "cadena de acero inoxidable",
         "colores": ["black", "pink", "white"],
-        "url": "assets/img/portfolio/portfolio-2.jpg",
+        "img": "assets/img/portfolio/portfolio-2.jpg",
         "precio": 700,
         "categoria": "Hombre"
     },
     {
-        "nombre": "collar",
+        "nombre": "Rocks Sky",
         "descripcion": "pulsera con piedrita muy bonita",
         "colores": ["green", "maroon", "blue"],
-        "url": "assets/img/portfolio/portfolio-3.jpg",
+        "img": "assets/img/portfolio/portfolio-3.jpg",
         "precio": 700,
         "categoria": "ninos"
     },
     {
-        "nombre": "pulsera2",
+        "nombre": "Night Mistery",
         "descripcion": "pulsera con piedrita muy bonita",
         "colores": ["wheat", "lightblue", "grey"],
-        "url": "assets/img/portfolio/portfolio-4.jpg",
+        "img": "assets/img/portfolio/portfolio-4.jpg",
         "precio": 700,
         "categoria": "mujer"
     },
     {
-        "nombre": "pulsera3",
+        "nombre": "cristal ocean",
+        "descripcion": "pulsera con piedrita muy bonita",
+        "colores": ["verde", "rojo"],
+        "img": "assets/img/portfolio/portfolio-5.jpg",
+        "precio": 700,
+        "categoria": "ninos"
+    },
+    {
+        "nombre": "Volcanika Sky",
         "descripcion": "pulsera con piedrita muy bonita",
         "colores": ["lightgreen", "black", "darkgrey"],
-        "url": "assets/img/portfolio/portfolio-6.jpg",
+        "img": "assets/img/portfolio/portfolio-6.jpg",
         "precio": 700,
         "categoria": "mujer"
     },
     {
-        "nombre": "pulsera4",
+        "nombre": "Soul Mates",
         "descripcion": "pulsera con piedrita muy bonita",
         "colores": ["mustard", "yellow", "blue"],
-        "url": "assets/img/portfolio/portfolio-7.jpg",
+        "img": "assets/img/portfolio/portfolio-7.jpg",
         "precio": 700,
         "categoria": "Hombre"
     },
     {
-        "nombre": "pulsera5",
+        "nombre": "Rocks Earth",
         "descripcion": "pulsera con piedrita muy bonita",
         "colores": ["", "rojo", "azul"],
-        "url": "assets/img/portfolio/portfolio-8.jpg",
+        "img": "assets/img/portfolio/portfolio-8.jpg",
         "precio": 700,
         "categoria": "mujer"
-    },
-    {
-        "nombre": "pulsera5 9",
-        "descripcion": "pulsera con piedrita muy bonita",
-        "colores": ["amarillo", "rojo", "azul"],
-        "url": "assets/img/portfolio/portfolio-9.jpg",
-        "precio": 700,
-        "categoria": "ninos"
-    },
-    {
-        "nombre": "cadena 2",
-        "descripcion": "pulsera con piedrita muy bonita",
-        "colores": ["verde", "rojo"],
-        "url": "assets/img/portfolio/portfolio-5.jpg",
-        "precio": 700,
-        "categoria": "ninos"
     }
 ]

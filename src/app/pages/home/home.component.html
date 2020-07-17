@@ -2,10 +2,10 @@
 
     <div class="row">
         <div class="col-12 bannerBig">
-            <img src="assets/img/hero-bg.jpg" alt="big banner" class="">
+            <img src="assets/img/home-banner.png" alt="big banner" class="">
             <div class="bannerinfo">
                 <h2>Bienvenidos a Rock's</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed, totam!</p>
+                <p class="collapse">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed, totam!</p>
                 <button class="btn btn-outline-light btn-lg" routerLink='/tienda'>Comenzar</button>
 
             </div>
@@ -17,9 +17,10 @@
     </div>
 
     <div class="row muestraProducto border shadow">
-        <div class="col-lg-4 col-sm-12 productos">
-            <div class="producto " *ngFor='let item of this.prodServ.productosdisp | slice:0:3; let i = index'>
-                <img [src]="item.url" [alt]="item.nombre">
+        <div class="col-lg-4 col-sm-12">
+            <div class="producto border" 
+                 *ngFor='let item of this.prodServ.productosdisp | slice:0:3; let i = index'>
+                <img [src]="item.img" [alt]="item.nombre">
                 <div class="infoProducto">
                     <h5>{{item.nombre}}</h5>
                     <p><i class="fas fa-tag"></i>{{item.precio}} ARS</p>
@@ -28,7 +29,7 @@
             </div>
         </div>
         <div class="col-lg-8 col-sm-12 modelo">
-            <img src="assets/img/about.jpg" alt="Productos Top">
+            <img src="assets/img/promo1.jpg" alt="Productos Top">
         </div>
     </div>
 </div>

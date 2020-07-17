@@ -1,0 +1,36 @@
+
+.tienda{
+    .tienda-item{
+        margin-bottom: 30px;
+        padding: 10px;
+
+        .muestra{
+            max-height: 300px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            object-fit: cover;
+        }
+
+        .tienda-info{
+            padding: 15px;
+
+            h4{
+                font-size: 18px;
+                font-weight: 600;
+                color: #191919;
+            }
+            p{
+                color: #4c4c4c;
+                font-size: 14px;
+                margin-bottom: 0;
+            }
+            .details-link{
+                position: absolute;
+                right: 40px;
+                bottom: calc(10% - 18px);
+            }
+
+        }
+    }
+}
