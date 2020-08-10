@@ -20,10 +20,10 @@
         <div class="col-lg-4 col-sm-12">
             <div class="producto border" 
                  *ngFor='let item of this.prodServ.productosdisp | slice:0:3; let i = index'>
-                <img [src]="item.img" [alt]="item.nombre">
+                <img [src]="item.data().img" [alt]="item.data().nombre">
                 <div class="infoProducto">
-                    <h5>{{item.nombre}}</h5>
-                    <p><i class="fas fa-tag"></i>{{item.precio}} ARS</p>
+                    <h5>{{item.data().nombre}}</h5>
+                    <p><i class="fas fa-tag"></i>{{item.data().precio}} ARS</p>
                     <button class="btn btn-dark" routerLink='/producto/{{i}}'>Comprar</button>
                 </div>
             </div>

@@ -20,7 +20,16 @@ export class CarritoComponent implements OnInit {
   ngOnInit() {
   }
 
-  quitame(i){
+  quitame(i: number){
     this.carrito.eliminarProducto(i)
+  }
+
+  comprame(){
+    if(this.carrito.productos.length == 0){
+      alert('No tienes productos en el carrito');
+    }else{
+      this.carrito.checkOut(this.comprador);
+    }
+
   }
 }

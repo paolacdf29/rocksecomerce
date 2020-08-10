@@ -1,6 +1,7 @@
 <div class="jumbotron info-tienda">
     <a (click)="toggleEditar()" class="float-right"><i class="far fa-edit"></i></a>
     <section *ngIf='!this.editar'>
+    <div *ngIf='tienda.tiendaInfo'>
     <h3>{{tienda.tiendaInfo.nombre}}</h3>
     <p>Twitter: {{tienda.tiendaInfo.twitter}}</p>
     <p>instagram: {{tienda.tiendaInfo.instagram}}</p>
@@ -10,61 +11,65 @@
     <p>Telefono: {{tienda.tiendaInfo.tlf}}</p>
     <p>Direccion: {{tienda.tiendaInfo.direccion}}</p>
     <p>Mensaje de entrada: {{tienda.tiendaInfo.msj}}</p>
+    <p>Medio de pago: {{tienda.tiendaInfo.pago}} </p>
     <br>
     <br>
+  </div>
     </section>
     <form action="" *ngIf='this.editar' class="mt-5">
-        <div class="input-group">
+        <div class="input-group my-3">
             <div class="input-group-prepend">
               <span class="input-group-text" id="nmbre">Nombre de la tienda</span>
             </div>
-            <input type="text" class="form-control" placeholder="Nombre" [value]='tienda.tiendaInfo.nombre'>
+            <input type="text" class="form-control" placeholder="Nombre" [(ngModel)]='tienda.tiendaInfo.nombre' name='nombre'>
         </div>
-        <div class="input-group">
+        <div class="input-group my-3">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="tw">Twitter</span>
+              <span class="input-group-text" id="tw">Twitter    </span>
             </div>
-            <input type="text" class="form-control" placeholder="Twitter" [value]='tienda.tiendaInfo.twitter'>
+            <input type="text" class="form-control" placeholder="Twitter" [(ngModel)]='tienda.tiendaInfo.twitter' name='tw'>
 
             <div class="input-group-prepend">
                 <span class="input-group-text" id="ig">instagram</span>
               </div>
-            <input type="text" class="form-control" placeholder="Istagram" [value]='tienda.tiendaInfo.instagram'>
+            <input type="text" class="form-control" placeholder="Istagram" [(ngModel)]='tienda.tiendaInfo.instagram' name='ig'>
         </div>
-        <div class="input-group">
+        <div class="input-group my-3">
             <div class="input-group-prepend">
               <span class="input-group-text" id="fb">Facebook</span>
             </div>
-            <input type="text" class="form-control" placeholder="Facebook" [value]='tienda.tiendaInfo.facebook'>
+            <input type="text" class="form-control" placeholder="Facebook" [(ngModel)]='tienda.tiendaInfo.facebook' name='fb'>
 
             <div class="input-group-prepend">
                 <span class="input-group-text" id="wa">WhatsApp</span>
               </div>
-            <input type="text" class="form-control" placeholder="WhatsApp" [value]='tienda.tiendaInfo.wa'>
+            <input type="text" class="form-control" placeholder="WhatsApp" [(ngModel)]='tienda.tiendaInfo.wa' name='wa'>
         </div>
-        <div class="input-group">
+        <div class="input-group my-3">
             <div class="input-group-prepend">
               <span class="input-group-text" id="mail">Email</span>
             </div>
-            <input type="text" class="form-control" placeholder="Email" [value]='tienda.tiendaInfo.mail'>
+            <input type="text" class="form-control" placeholder="Email" [value]='tienda.tiendaInfo.mail' name='mail'>
 
             <div class="input-group-prepend">
                 <span class="input-group-text" id="tlf">Telefono</span>
               </div>
-            <input type="text" class="form-control" placeholder="Telefono" [value]='tienda.tiendaInfo.tlf'>
+            <input type="text" class="form-control" placeholder="Telefono" [(ngModel)]='tienda.tiendaInfo.tlf' name='tlf'>
         </div>
-        <div class="input-group">
+        <div class="input-group my-3">
             <div class="input-group-prepend">
               <span class="input-group-text" id="direccion">Direccion</span>
             </div>
-            <input type="text" class="form-control" placeholder="Direccion" [value]='tienda.tiendaInfo.direccion'>
+            <input type="text" class="form-control" placeholder="Direccion" [(ngModel)]='tienda.tiendaInfo.direccion' name='direccion'>
         </div>
-        <div class="input-group">
+        <div class="input-group my-3">
             <div class="input-group-prepend">
               <span class="input-group-text" id="nmbre">Mensaje</span>
             </div>
-            <input type="textarea" class="form-control" placeholder="Mensaje de Bienvenida" [value]='tienda.tiendaInfo.msj'>
+            <textarea type="textarea" class="form-control" placeholder="Mensaje de Bienvenida" [(ngModel)]='tienda.tiendaInfo.msj' name=''></textarea>
         </div>
+
+        <button class="btn btn-primary btn-block mt-5" (click)="editarlainfo()">Listo!</button>
     </form>
 
 </div>

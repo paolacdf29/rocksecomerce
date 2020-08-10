@@ -1,12 +1,30 @@
-<div class="card producto-info my-5" *ngFor='let item of this.productoSer.productosdisp'>
+<div class="btn-group" role="group" aria-label="Basic example">
+    <button type="button" class="btn btn-secondary" (click)="productoSer.getproductos()">Activos</button>
+    <button type="button" class="btn btn-secondary" (click)="productoSer.getproductosinactivos()">Inactivos</button>
+</div>
+
+<p routerLink='/admin/detalles-productos' style="color: green">+ Agregar un producto</p>
+<div class="card producto-info mb-5" *ngFor='let item of this.productoSer.productosdisp; let i = index'>
     <div class="card-header">
-       <span> Nombre del producto: {{item.nombre}} </span>
-        <a routerLink='/admin/editar/producto/1'><i class="far fa-edit"></i></a>
+        <span> Nombre del producto: {{item.data().nombre}} </span>
+
+        <a (click)="productoSer.eliminarproducto(item.id)"><i class="fas fa-trash"></i></a>
+        <br>
+        <a routerLink='/admin/detalles-productos/{{i}}'><i class="far fa-edit"></i></a>
     </div>
     <div class="card-body">
-        <img [src]="item.img" [alt]="item.nombre" class="img-fluid">
-        <p>Descripción: {{item.descripcion}} </p>
+        <img [src]="item.data().img" [alt]="item.data().nombre" class="img-fluid">
+        <p>Descripción: {{item.data().descripcion}} </p>
+        <span><i class="fas fa-tags"></i> Precio: {{item.data().precio}} ARS</span>
         <br>
-        <span><i class="fas fa-tags"></i> Precio: {{item.precio}} ARS</span>
+        <br>
+        <br>
+        <mat-slide-toggle class="example-margin" 
+                          color='accent' 
+                          [checked]='item.data().activo'
+                          (click)="productoSer.cambiarestado(item.id, !item.data().activo)">     
+            Activo
+        </mat-slide-toggle>
+        <br>
     </div>
 </div>

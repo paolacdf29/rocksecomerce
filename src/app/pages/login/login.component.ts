@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FireService } from '../../services/fire.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+              public fireService: FireService,
+              private router: Router
+              ) { }
 
   ngOnInit() {
+    console.log('si entra');
+  }
+
+  login(){
+    this.fireService.loginWithGoogle().then(data => this.router.navigate(['/']) );
   }
 
 }

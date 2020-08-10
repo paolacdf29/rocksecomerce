@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { producto, porden } from '../interfaces/interfaces';
+import { producto, porden, comprador } from '../interfaces/interfaces';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { Router } from '@angular/router';
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -10,16 +13,17 @@ export class CarritoService {
   productos: porden[] = [];
   totalprod: number = 0;
   subtotal: number = 0;
-  comentarios: string;
+  comprador: any;
+  checkon: boolean = false;
 
-  constructor(private http: HttpClient) { }
+  constructor(private router: Router,
+              private firestore: AngularFirestore) { }
 
   agregarProducto(producto: producto, cantidad: number){
     const porden = {
-      id: "cloudFirestoreId",
       nombre: producto.nombre,
       cantidad: cantidad,
-      precio: producto.precio
+      precio: producto.precio,            
     }
     this.productos.push(porden);
     this.subtotal += producto.precio * cantidad;
@@ -39,15 +43,37 @@ export class CarritoService {
   limpiarCarrito(){
     this.productos = [];
     this.subtotal = 0;
+    this.totalprod = 0;
+    this.comprador = null;
+    this.checkon = false;
   }
 
-  enviarOrden(){
-    //aqui se envia la orden al backend
+  async enviarOrden(pagoref: string){
+    console.log('preparando orden..')
+    const data = {
+      comentarios: '',
+      comprador: this.comprador,
+      estado: 'validando',
+      fecha: new Date(),
+      pago: pagoref,
+      productos: this.productos,
+      subtotal: this.subtotal,
+      totalprod: this.totalprod,
+      activo: true
+    }
+    const res = await this.firestore.collection('ordenes').add(data);
+    console.log('Orden creada exitosamente con el id: ', res.id);
+    this.limpiarCarrito();
+    this.router.navigateByUrl(`/tracker/${res.id}`);    
   }
 
-  checkOut(){
+  checkOut(persona: comprador){
     //aqui se hace el cobro
-    this.enviarOrden();
+    this.comprador = persona;
+    this.checkon = true;
+    this.router.navigateByUrl('/pagos');
+
+    //this.enviarOrden();
   }
 
 }

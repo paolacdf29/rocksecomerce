@@ -1,0 +1,65 @@
+<div class="jumbotron my-5 py-5">
+    <form>
+        <div class="form-group mb-3">
+            <label for="nombre">Nombre del producto</label>
+            <input type="text" 
+                   class="form-control"
+                   name='nombre'
+                   [(ngModel)]="producto.nombre"
+                   required>
+        </div>
+        <div class="form-group mb-3">
+            <label for="descripcion">Descripción</label>
+            <textarea type="text" 
+                   class="form-control"
+                   name='descripcion'
+                   [(ngModel)]="producto.descripcion"
+                   rows = '2'
+                   required></textarea>
+        </div>
+        <div class="form-group mb-3">
+            <label for="precio">Precio</label>
+            <input type="number" 
+                   class="form-control"
+                   name='precio'
+                   [(ngModel)]="producto.precio"
+                   required>
+        </div>
+        <div class="form-group mb-3">
+            <label for="categoria">Cetegoria</label>
+
+            <select class="custom-select" [(ngModel)]="producto.categoria" name="categoria">
+                <option selected>...</option>
+                <option value="hombre">Hombre</option>
+                <option value="mujer">Mujer</option>
+                <option value="niño">Niños</option>
+            </select>
+        </div>
+        <div class="form-group mb-3">
+            <label for="color">Colores</label>
+            <div *ngFor='let color of producto.colores; let i = index' class="mb-3">
+                <a (click)="quitarcolor(i)" class="badge badge-pill badge-light">{{color}} X </a>
+            </div>
+            <input type="text" 
+                   class="form-control"
+                   name='color'
+                   [(ngModel)]="colorNuevo"
+                   required>
+            <div class="input-group-append">
+                <button class="btn btn-outline-primary" type="button" (click)="agregarcolor()">agregar</button>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <img [src]="producto.img" [alt]="producto.nombre" class="img-thumbnail rounded float-left">
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" id="img" (change)='subirimg($event)'>
+                <label class="custom-file-label" for="img">Seleccionar Archivo</label>
+            </div>
+        </div>
+        
+
+        <button class="btn btn-primary btn-block" (click)="enviarproducto()">Listo!</button>
+
+    </form>
+</div>

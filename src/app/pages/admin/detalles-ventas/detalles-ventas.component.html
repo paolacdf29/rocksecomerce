@@ -1,19 +1,27 @@
 <div class="jumbotron">
-    <h3>Orden No.3</h3>
-    <p>Cliente: Pedro Perez</p>
-    <p>Email: pedritoperez@algomail.com</p>
-    <p>Telefono: 11 628808080</p>
-    <p>Direccion: Sanchez de bustamante 811, 3c</p>
-    <p>Fecha: 10/07/2020</p>
+    <h3>ID {{orden.id}}</h3>
+    <p>Cliente: {{orden.data().comprador.nombre}}</p>
+    <p>Email: {{orden.data().comprador.email}}</p>
+    <p>Telefono: {{orden.data().comprador.telefono}}</p>
+    <p>Direccion: {{orden.data().comprador.direccion}}</p>
+    <p>Fecha: {{orden.data().fecha}}</p>
     <br>
     <br>
     <h4>Productos comprados</h4>
-    <p>Pulsera 2, Color azul  <span class="badge badge-dark badge-pill">1</span></p>
-    <p>Pulsera 1, Color azul  <span class="badge badge-dark badge-pill">1</span></p>
+    <div *ngFor='let item of orden.data().productos'>
+        <p>{{item.nombre}} <span class="badge badge-dark badge-pill">{{item.cantidad}}</span></p>
+    </div>
     <br>
     <br>
     <h4>Detalles de pago</h4>
-    <p>Subtotal: 4000 ARS</p>
-    <p>Medio de pago: TodoPago TDC</p>
-    <p>Status: completado</p>
+    <p>Subtotal: {{orden.data().subtotal}} ARS</p>
+    <p>Referencia de pago: {{orden.data().pago}}</p>
+    <p>Status: {{orden.data().estado}}</p>
+    <br>
+    <br>
+    <div class="btn-group">
+        <button type="button" class="btn btn-dark btn-lg" (click)="actualizarOrden('Confirmado')" >Pago validado</button>
+        <button type="button" class="btn btn-dark btn-lg" (click)="actualizarOrden('Enviado')">Enviado</button>
+        <button type="button" class="btn btn-dark btn-lg" (click)="actualizarOrden('Completado')">Entregado </button>
+    </div>
 </div>

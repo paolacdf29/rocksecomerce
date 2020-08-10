@@ -1,0 +1,45 @@
+<div class="row justify-content-center">
+    <div class="col-lg-8 col-sm-12 text-center">
+
+        <div class="jumbotron py-5 my-5" *ngIf='carrito.checkon'>
+        
+        <h2>Medios de pago disponible</h2>
+        <div class="row justify-content-center my-5 py-5">
+            <div class="col-lg-4 col-sm-12 ">
+                <div class="card border shadow bg-dark text-white">
+                    <div class="card-body">
+                        <h5 class="card-title" >
+                            Link de mercadopago
+                        </h5>
+                    </div>
+                </div>
+            </div>        
+        </div>
+
+            <h4>El total a pagar es de: {{carrito.subtotal}} ARS</h4>
+
+            <form>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" >Referencia de pago</span>
+                </div>
+                <input type="text" 
+                       class="form-control" 
+                       placeholder="No. ref" 
+                       required 
+                       name="ref" 
+                       [(ngModel)]="ref"
+                       minlength='2'>
+            </div>
+
+            <button class='btn btn-lg btn-primary' (click)="finalizarPago()"> Completar compra </button>
+
+            </form>
+
+        </div>
+
+        <div class="jumbotron py-5 my-5" *ngIf='!carrito.checkon'>
+            <p>En este momento no tienes un pago activo, por favor regresa al carrito de compra</p>
+        </div>
+    </div>
+</div>

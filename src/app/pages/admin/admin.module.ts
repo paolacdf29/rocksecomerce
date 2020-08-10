@@ -9,7 +9,10 @@ import { ProductosComponent } from './productos/productos.component';
 import { ReportesComponent } from './reportes/reportes.component';
 import { TiendaDatosComponent } from './tienda-datos/tienda-datos.component';
 import { TiendaBrandComponent } from './tienda-brand/tienda-brand.component';
-import { MoneyComponent } from './money/money.component';
+import { DetallesProductosComponent } from './detalles-productos/detalles-productos.component';
+import { FormsModule } from '@angular/forms';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+
 
 
 @NgModule({
@@ -21,11 +24,13 @@ import { MoneyComponent } from './money/money.component';
     ReportesComponent,
     TiendaDatosComponent,
     TiendaBrandComponent,
-    MoneyComponent
+    DetallesProductosComponent
   ],
   imports: [
     CommonModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    FormsModule,
+    MatSlideToggleModule
   ],
   exports: [
     AdminComponent

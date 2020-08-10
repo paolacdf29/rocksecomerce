@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { OrdenesService } from '../../../services/ordenes.service';
+import { orden } from '../../../interfaces/interfaces';
 
 @Component({
   selector: 'app-detalles-ventas',
@@ -8,13 +10,33 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class DetallesVentasComponent implements OnInit {
 
-  oid: number;
+  indice: number;
+  orden: any;
 
-  constructor(private router: ActivatedRoute) { }
+  constructor(private router: ActivatedRoute,
+              private ordenes: OrdenesService,
+              private route: Router) { }
 
   ngOnInit() {
-    this.oid = this.router.snapshot.params.oid;
-    console.log(this.oid);
+    this.indice = this.router.snapshot.params.oid;
+    this.orden = this.ordenes.getOrden(this.indice);
+    if(!this.orden){
+      this.route.navigateByUrl('/admin');
+    }
   }
+  
+  actualizarOrden(msj: string){
+    let data = {
+      estado: msj,
+      activo: true
+    }
+    if(msj == 'Completado'){
+      data.activo = false;
+    }
+
+    this.ordenes.setOrder(this.orden.id, data);
+
+  }
+
 
 }

@@ -5,32 +5,33 @@
             <div class="section-title">
                 <h2>Detalles de compra</h2>
             </div>
-
+            <form>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                    <span class="input-group-text" id="nombre">Nombre del comprador</span>
+                    <span class="input-group-text" >Nombre del comprador</span>
                 </div>
-                <input type="text" class="form-control" placeholder="Nombre y apellido" name="nombre">
+                <input type="text" class="form-control" placeholder="Nombre y apellido" name="nombre" [(ngModel)]="comprador.nombre">
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                    <span class="input-group-text" id="nombre">Dirección de envio</span>
+                    <span class="input-group-text" >Dirección de envio</span>
                 </div>
-                <input type="text" class="form-control" placeholder="Direccion" required name="direccion">
+                <input type="text" class="form-control" placeholder="Direccion" required name="direccion" [(ngModel)]="comprador.direccion">
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                    <span class="input-group-text" id="nombre">Correo electronico</span>
+                    <span class="input-group-text" >Correo electronico</span>
                 </div>
-                <input type="email" class="form-control" placeholder="Email" required name="email">
+                <input type="email" class="form-control" placeholder="Email" required name="email" [(ngModel)]="comprador.email">
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                    <span class="input-group-text" id="nombre">Telefono</span>
+                    <span class="input-group-text" >Telefono</span>
                 </div>
-                <input type="number" class="form-control" placeholder="telefolo" name='tlf'>
+                <input type="number" class="form-control" placeholder="telefolo" name='tlf' [(ngModel)]="comprador.telefono">
             </div>
-            <button class="btn btn-lg btn-primary mx-2 my-5">Realizar compra</button>
+            <button class="btn btn-lg btn-primary mx-2 my-5" (click)="comprame()"> Realizar compra </button>
+        </form>
         </div>
 
         

@@ -1,17 +1,33 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { tienda } from '../interfaces/interfaces';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class TiendaService {
 
-  tiendaInfo: tienda;
+  tiendaInfo: any;
 
-  constructor(private http: HttpClient) { }ç
+  constructor(private firestore: AngularFirestore) { }
 
   getInfo(){
-    this.http.get<tienda>('/assets/data/tienda.json').subscribe(resp => this.tiendaInfo = resp);
+
+    this.firestore.collection('tienda').doc('1').get()
+      .subscribe((doc) => {
+        if (!doc.exists) {
+          console.log('No such document!');
+        } else {
+          this.tiendaInfo = doc.data();
+        }
+      })
+  }
+
+  editarInfo(){
+    console.log(this.tiendaInfo);
+    const tiendaRef = this.firestore.collection('tienda').doc('1');
+    const res = tiendaRef.set(this.tiendaInfo, {merge: true});
+    console.log(res)
   }
 }

@@ -1,0 +1,32 @@
+<div class="row justify-content-center">
+    <div class="col-lg-8 col-sm-12">
+
+        
+        <div class="jumbotron my-5 py-5 text-center">
+            
+            <h5>Bienvenido! en esta pagina puedes hacerle seguimiento a tu pedido</h5>
+            <div *ngFor='let alert of defaultAlert' >
+                <alert *ngIf='nuevo' [type]="alert.type" [dismissible]="alert.dismissable" (onClosed)="onClosed(alert)">{{ alert.msj }}</alert>
+            </div>
+            
+            <div class="card bg-light my-5" *ngIf='pedido'>
+                <div class="card-body text-center">
+                    <p>Receptor: {{pedido.comprador.nombre}}</p>
+                    <p>Mail: {{pedido.comprador.email}}</p>
+                    <p>Estado: {{pedido.estado}}</p>
+                </div>
+            </div>
+            
+            <p>Ingresa el ID de tu pedido aqui abajo y presiona el boton para buscarlo</p>
+            <form >
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Id del pedido</span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="ID" name='oid'[(ngModel)]="oid">
+                </div>
+                <button (click)="buscame()" class="btn btn-block btn-primary my-3"> Buscar pedido </button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -19,4 +19,10 @@ export class TiendaDatosComponent implements OnInit {
     this.editar = !this.editar;
   }
 
+  editarlainfo(){
+    this.editar = !this.editar;
+    this.tienda.editarInfo();
+    this.tienda.getInfo();
+  }
+
 }

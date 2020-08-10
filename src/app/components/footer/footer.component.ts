@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TiendaService } from '../../services/tienda.service';
+import { tienda } from '../../interfaces/interfaces';
 
 @Component({
   selector: 'app-footer',
@@ -8,10 +9,12 @@ import { TiendaService } from '../../services/tienda.service';
 })
 export class FooterComponent implements OnInit {
 
-  constructor(public tienda: TiendaService) { }
-
-  ngOnInit() {
+  constructor(public tienda: TiendaService) {
     this.tienda.getInfo();
+  }
+  
+  ngOnInit() {
+    //this.tienda.getInfo();
   }
 
 }

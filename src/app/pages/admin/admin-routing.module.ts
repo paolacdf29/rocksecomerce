@@ -7,7 +7,7 @@ import { ProductosComponent } from './productos/productos.component';
 import { ReportesComponent } from './reportes/reportes.component';
 import { TiendaDatosComponent } from './tienda-datos/tienda-datos.component';
 import { TiendaBrandComponent } from './tienda-brand/tienda-brand.component';
-import { MoneyComponent } from './money/money.component';
+import { DetallesProductosComponent } from './detalles-productos/detalles-productos.component';
 
 
 const routes: Routes = [
@@ -40,8 +40,12 @@ const routes: Routes = [
         component: TiendaBrandComponent
       },
       {
-        path: 'money',
-        component: MoneyComponent
+        path: 'detalles-productos/:pid',
+        component: DetallesProductosComponent
+      },
+      {
+        path: 'detalles-productos',
+        component: DetallesProductosComponent
       },
       {
         path: '',

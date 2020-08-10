@@ -5,13 +5,21 @@ export interface producto {
     img:         string;
     precio:      number;
     categoria:   string;
+    activo:      boolean;
+    imgref:      string;
 }
 
 export interface porden{
-    id: string;
     nombre: string;
     cantidad: number;
     precio: number;
+}
+
+export interface comprador{
+    nombre: string;
+    direccion: string;
+    email: string;
+    telefono: number;
 }
 
 export interface orden{
@@ -19,6 +27,10 @@ export interface orden{
     subtotal: number;
     totalprod: number;
     comentarios: string;
+    comprador: comprador;
+    estado: number;
+    fecha: string;
+    pago: string;
 }
 
 export interface tienda{
@@ -31,4 +43,5 @@ export interface tienda{
     tlf :   number;
     direccion :  string;
     msj :  number;
+    pago: string;
 }

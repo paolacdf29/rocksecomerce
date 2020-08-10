@@ -1,46 +1,23 @@
 <div class="btn-group my-2" role="group" aria-label="Basic example">
-    <button type="button" class="btn btn-secondary">Activos</button>
-    <button type="button" class="btn btn-secondary">Finalizados</button>
+    <button type="button" class="btn btn-secondary" (click)="ordenes.getOrdenesActivas()">Activos</button>
+    <button type="button" class="btn btn-secondary" (click)="ordenes.getOrdenesCompletadas()">Finalizados</button>
 </div>
 
 <div class="list-group mb-5">
-    <a routerLink='/admin/detalles-ventas/1' class="list-group-item list-group-item-action">
+    <a routerLink='/admin/detalles-ventas/{{i}}' 
+       class="list-group-item list-group-item-action"
+       *ngFor='let orden of ordenes.ordenes; let i = index'>
+
       <div class="d-flex w-100 justify-content-between">
-        <h5 class="mb-1">Orden No.3</h5>
+        <h5 class="mb-1">ID {{orden.id}}</h5>
         <small>3 days ago</small>
       </div>
-      <p class="mb-1">Cliente: Paola D.</p>
-      <p class="mb-1">Contacto: paolacdf29@gmail.com</p>
-      <p class="mb-1">Direccion: Sanchez de bustamante 811</p>
-      <div class="progress">
-        <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-      </div>
+      <p class="mb-1">Cliente: {{orden.data().comprador.nombre}}</p>
+      <p class="mb-1">Contacto: {{orden.data().comprador.email}}</p>
+      <p class="mb-1">Direccion: {{orden.data().comprador.direccion}}</p>
+      <p class="mb-1">Telefono: {{orden.data().comprador.telefono}}</p>
+      <h4 class="mb-1">{{orden.data().estado}}</h4>
       <small>Ver productos.</small>
     </a>
-    <a routerLink='/admin/detalles-ventas/1' class="list-group-item list-group-item-action">
-        <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">Orden No.4</h5>
-            <small>3 days ago</small>
-        </div>
-        <p class="mb-1">Cliente: Paola D.</p>
-        <p class="mb-1">Contacto: paolacdf29@gmail.com</p>
-        <p class="mb-1">Direccion: Sanchez de bustamante 811</p>
-        <div class="progress">
-            <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
-        <small>Ver productos.</small>
-    </a>
-    <a routerLink='/admin/detalles-ventas/1' class="list-group-item list-group-item-action">
-        <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">Orden No.5</h5>
-            <small>3 days ago</small>
-        </div>
-        <p class="mb-1">Cliente: Paola D.</p>
-        <p class="mb-1">Contacto: paolacdf29@gmail.com</p>
-        <p class="mb-1">Direccion: Sanchez de bustamante 811</p>
-        <div class="progress">
-        <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
-        <small>Ver productos.</small>
-    </a>
 </div>
+
