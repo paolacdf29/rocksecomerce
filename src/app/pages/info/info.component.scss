@@ -1,0 +1,17 @@
+ul {
+    counter-reset: section;
+    list-style-type: none;
+  }
+
+i{
+  font-size: 60px;
+}
+
+li::before {
+counter-increment: section;
+content: counters(section,".") " ";
+}
+
+li {
+  font-size: 24px;;  
+} 

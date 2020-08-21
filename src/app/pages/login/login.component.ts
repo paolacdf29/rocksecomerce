@@ -9,17 +9,32 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
+  googleUser: any;
+  user: any = {
+    username: '',
+    pass: ''
+  }
+
   constructor(
               public fireService: FireService,
               private router: Router
               ) { }
 
   ngOnInit() {
-    console.log('si entra');
   }
 
-  login(){
-    this.fireService.loginWithGoogle().then(data => this.router.navigate(['/']) );
+  loginGoogle(){
+
+    this.fireService.loginGoogle().then(data => this.googleUser = data.additionalUserInfo.profile);
+    console.log(this.googleUser);
   }
 
+  loginFB(){
+    //this.fireService.loginWithFb();
+  }
+
+  loginUser(){
+    this.fireService.tempUser = this.user;
+    this.router.navigateByUrl('/admin');
+  }
 }

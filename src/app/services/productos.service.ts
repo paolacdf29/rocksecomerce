@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class ProductosService {
 
+  productoscargados: boolean = false;
   productosdisp: any[] = [];
   
   constructor(private firebase: AngularFirestore,
@@ -24,7 +25,9 @@ export class ProductosService {
               if(doc.data().activo){
                 this.productosdisp.push(doc);
               }
-            });
+            }
+            );
+            this.productoscargados = true;
           });
   }
 

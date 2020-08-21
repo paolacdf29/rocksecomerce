@@ -10,10 +10,13 @@ export const environment = {
     databaseURL: "https://test01-c736e.firebaseio.com",
     projectId: "test01-c736e",
     storageBucket: "test01-c736e.appspot.com",
-    messagingSenderId: "sender-id",
-    appID: "1:619549995137:web:9e8198b9e2feef08b01d80"
+    messagingSenderId: "619549995137",
+    appId: "1:619549995137:web:9e8198b9e2feef08b01d80"
   }
 };
+
+
+
 
 /*
  * For easier debugging in development mode, you can import the following file

@@ -5,32 +5,85 @@
             <div class="section-title">
                 <h2>Detalles de compra</h2>
             </div>
-            <form>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" >Nombre del comprador</span>
+
+            <form  #compraForm="ngForm" >
+            <div *ngIf='!user'>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" >Nombre del comprador</span>
+                    </div>
+                    <input type="text" 
+                           class="form-control ng-valid" 
+                           placeholder="Nombre y apellido" 
+                           name="nombre" 
+                           [(ngModel)]="comprador.nombre" 
+                           required 
+                           min='3'>
                 </div>
-                <input type="text" class="form-control" placeholder="Nombre y apellido" name="nombre" [(ngModel)]="comprador.nombre">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" >Correo electronico</span>
+                    </div>
+                    <input type="email" 
+                           class="form-control ng-valid" 
+                           placeholder="Email" 
+                           name="email"
+                           id="email"
+                           [(ngModel)]="comprador.email" 
+                           required>
+                </div>
             </div>
+
+            <div *ngIf='user'>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" >Nombre del comprador</span>
+                    </div>
+                    <input type="text" 
+                           class="form-control ng-valid" 
+                           placeholder="Nombre y apellido" 
+                           name="nombre" 
+                           [(ngModel)]="user.nombre" 
+                           required 
+                           min='3'>
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" >Correo electronico</span>
+                    </div>
+                    <input type="email" 
+                           class="form-control ng-valid" 
+                           placeholder="Email" 
+                           name="email"
+                           id="email"
+                           [(ngModel)]="user.email" 
+                           required>
+                </div>
+            </div>
+            
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text" >Dirección de envio</span>
                 </div>
-                <input type="text" class="form-control" placeholder="Direccion" required name="direccion" [(ngModel)]="comprador.direccion">
+                <input type="text" 
+                       class="form-control" 
+                       placeholder="Direccion" 
+                       name="direccion" 
+                       [(ngModel)]="comprador.direccion" 
+                       required>
             </div>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" >Correo electronico</span>
-                </div>
-                <input type="email" class="form-control" placeholder="Email" required name="email" [(ngModel)]="comprador.email">
-            </div>
+
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text" >Telefono</span>
                 </div>
-                <input type="number" class="form-control" placeholder="telefolo" name='tlf' [(ngModel)]="comprador.telefono">
+                <input type="number" 
+                       class="form-control" 
+                       placeholder="telefono" 
+                       name='tlf' 
+                       [(ngModel)]="comprador.telefono">
             </div>
-            <button class="btn btn-lg btn-primary mx-2 my-5" (click)="comprame()"> Realizar compra </button>
+            <button class="btn btn-lg btn-primary mx-2 my-5" type="button" (click)="comprame(compraForm)"> Realizar compra </button>
         </form>
         </div>
 

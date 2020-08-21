@@ -15,7 +15,13 @@
               <a class="nav-link" routerLink='/tienda'>Tienda</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" routerLink='/info'>Preguntas frecuentes</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" routerLink='/contacto'>Contacto</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink='/tracker'>Compras</a>
             </li>
           </ul>
         </div>
@@ -25,9 +31,11 @@
           <a routerLink='' class="logo mr-auto"><img src="assets/img/Logo.png" alt="" class="img-fluid"></a>
         </div>
 
-        <span class="navbar-text" routerLink='/carrito'>
-          {{carritoService.totalprod}} | <i class="fab fa-opencart"></i>
+        <span class="navbar-text">
+          {{carritoService.totalprod}} | <i class="fab fa-opencart" routerLink='/carrito'></i>
+           | <i class="fas fa-user" routerLink='/login'></i>
         </span>
+        
 
       </nav>
     </div>

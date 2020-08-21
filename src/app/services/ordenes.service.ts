@@ -64,10 +64,30 @@ export class OrdenesService {
     return doc.valueChanges();
   }
 
+  getUserOrders(userid: string){
+    let orders = [];
+    this.firesetore.collection('ordenes').get()
+        .subscribe( snapshot =>{
+          snapshot.forEach( (info) => {
+            if(info.data().uid == userid){
+              orders.push( info.data() );
+            }
+          });
+        });
+
+    return orders;
+  }
+
   async setOrder(oid: string, data){
     const ordenRef = this.firesetore.collection('ordenes').doc(oid);
     const res = await ordenRef.set(data, { merge: true });
     this.router.navigateByUrl('/admin');
+  }
+
+  async eliminarOrden(oid: string){
+    const ordenRef = this.firesetore.collection('ordenes').doc(oid);
+    const res = await ordenRef.delete();
+    return res;
   }
 
 }

@@ -8,6 +8,7 @@ import { ReportesComponent } from './reportes/reportes.component';
 import { TiendaDatosComponent } from './tienda-datos/tienda-datos.component';
 import { TiendaBrandComponent } from './tienda-brand/tienda-brand.component';
 import { DetallesProductosComponent } from './detalles-productos/detalles-productos.component';
+import { AdminctrlGuard } from '../../guards/adminctrl.guard';
 
 
 const routes: Routes = [
@@ -52,7 +53,8 @@ const routes: Routes = [
         redirectTo: 'dashboard',
         pathMatch: 'full'
       }
-    ]
+    ],
+    canLoad: [AdminctrlGuard]
    },
   {
     path: '',

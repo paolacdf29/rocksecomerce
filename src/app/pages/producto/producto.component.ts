@@ -12,6 +12,7 @@ export class ProductoComponent implements OnInit {
 
   item: any;
   cantidad: number = 1;
+  tamano: string = 'S';
 
   constructor(private prodServ: ProductosService,
               private carrito: CarritoService,
@@ -23,7 +24,7 @@ export class ProductoComponent implements OnInit {
   }
 
   addcarrito(){
-    this.carrito.agregarProducto(this.item, this.cantidad)
+    this.carrito.agregarProducto(this.item, this.cantidad, this.tamano)
   }
 
   sumaResta(opcion: string){
@@ -36,4 +37,7 @@ export class ProductoComponent implements OnInit {
     }
   }
 
+  cambiarTam(size: string){
+    this.tamano = size;
+  }
 }

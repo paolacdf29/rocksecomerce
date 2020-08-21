@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FireService } from '../../services/fire.service';
 
 @Component({
   selector: 'app-admin',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminComponent implements OnInit {
 
-  constructor() { }
+  constructor(public fireAuth: FireService) { }
 
   ngOnInit() {
+    console.log(this.fireAuth.getUserId());
   }
 
 }

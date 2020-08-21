@@ -28,5 +28,13 @@
                 <button (click)="buscame()" class="btn btn-block btn-primary my-3"> Buscar pedido </button>
             </form>
         </div>
+
+        <div class="card bg-light my-5" *ngFor='let Order of userO'>
+            <div class="card-body text-center">
+                <p>Receptor: {{Order.comprador.nombre}}</p>
+                <p>Mail: {{Order.comprador.email}}</p>
+                <p>Estado: {{Order.estado}}</p>
+            </div>
+        </div>
     </div>
 </div>

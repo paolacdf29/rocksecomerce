@@ -1,7 +1,6 @@
 export interface producto {
     nombre:      string;
     descripcion: string;
-    colores:     string[];
     img:         string;
     precio:      number;
     categoria:   string;
@@ -44,4 +43,5 @@ export interface tienda{
     direccion :  string;
     msj :  number;
     pago: string;
+    admin: string;
 }

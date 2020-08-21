@@ -4,12 +4,12 @@
     <p>Email: {{orden.data().comprador.email}}</p>
     <p>Telefono: {{orden.data().comprador.telefono}}</p>
     <p>Direccion: {{orden.data().comprador.direccion}}</p>
-    <p>Fecha: {{orden.data().fecha}}</p>
     <br>
     <br>
     <h4>Productos comprados</h4>
     <div *ngFor='let item of orden.data().productos'>
-        <p>{{item.nombre}} <span class="badge badge-dark badge-pill">{{item.cantidad}}</span></p>
+        <p>{{item.nombre}}, talla: {{item.tamano}}<span class="badge badge-dark badge-pill">{{item.cantidad}}</span></p>
+
     </div>
     <br>
     <br>
@@ -23,5 +23,6 @@
         <button type="button" class="btn btn-dark btn-lg" (click)="actualizarOrden('Confirmado')" >Pago validado</button>
         <button type="button" class="btn btn-dark btn-lg" (click)="actualizarOrden('Enviado')">Enviado</button>
         <button type="button" class="btn btn-dark btn-lg" (click)="actualizarOrden('Completado')">Entregado </button>
+        <button type="button" class="btn btn-danger btn-lg" (click)="eliminar()">Eliminar orden</button>
     </div>
 </div>

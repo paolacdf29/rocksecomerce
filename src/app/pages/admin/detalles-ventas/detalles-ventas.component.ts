@@ -38,5 +38,9 @@ export class DetallesVentasComponent implements OnInit {
 
   }
 
+  eliminar(){
+    this.ordenes.eliminarOrden(this.orden.uid);
+  }
+
 
 }

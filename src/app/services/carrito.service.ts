@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { producto, porden, comprador } from '../interfaces/interfaces';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
+import { FireService } from './fire.service';
 
 
 
@@ -17,13 +18,15 @@ export class CarritoService {
   checkon: boolean = false;
 
   constructor(private router: Router,
-              private firestore: AngularFirestore) { }
+              private firestore: AngularFirestore,
+              private fireAuth: FireService) { }
 
-  agregarProducto(producto: producto, cantidad: number){
+  agregarProducto(producto: producto, cantidad: number, tamanoelegido: string){
     const porden = {
       nombre: producto.nombre,
       cantidad: cantidad,
-      precio: producto.precio,            
+      precio: producto.precio,
+      tamano: tamanoelegido
     }
     this.productos.push(porden);
     this.subtotal += producto.precio * cantidad;
@@ -51,7 +54,7 @@ export class CarritoService {
   async enviarOrden(pagoref: string){
     console.log('preparando orden..')
     const data = {
-      comentarios: '',
+      uid: this.fireAuth.getUserId(),
       comprador: this.comprador,
       estado: 'validando',
       fecha: new Date(),

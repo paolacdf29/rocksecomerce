@@ -15,7 +15,6 @@ export class DetallesProductosComponent implements OnInit {
     nombre: '',
     descripcion: '',
     precio: null,
-    colores: [],
     categoria: '',
     img: '',
     activo: true,
@@ -24,7 +23,6 @@ export class DetallesProductosComponent implements OnInit {
   productoImg: File;
   imgExtencion: string;
   id_producto: string = '';
-  colorNuevo: string;
 
   constructor(private productos: ProductosService,
               private firestorage: FirestorageService,
@@ -40,17 +38,6 @@ export class DetallesProductosComponent implements OnInit {
 
   }
 
-  quitarcolor(i: number){
-    this.producto.colores.splice(i, 1)
-  }
-
-  agregarcolor(){
-    if(this.colorNuevo != ''){
-      this.producto.colores.push(this.colorNuevo);
-      this.colorNuevo = '';
-    }
-  }
-
   enviarproducto(){
     if(this.id_producto == ''){
       this.productos.agregarproducto(this.producto)
@@ -61,10 +48,13 @@ export class DetallesProductosComponent implements OnInit {
   }
 
   subirimg(evento){
-    this.productoImg = evento.target.files[0];
-    this.imgExtencion =  evento.target.files[0].type.split('/')[1];
-    this.producto.img = this.firestorage.agregarImg(this.productoImg, this.id_producto, this.imgExtencion);
-    this.producto.imgref = this.id_producto + '.' + this.imgExtencion;
+    this.productoImg = evento.target.files[0]; //Esto contiene la imagen
+    this.imgExtencion =  evento.target.files[0].type.split('/')[1]; //Extencion de la imagen
+    const newref = this.id_producto + '.' + this.imgExtencion; //Nombre que tendra la imagen
+    this.producto.img = this.firestorage.agregarImg(this.productoImg, newref, this.producto.imgref); //Sube la imagen y almacena el url
+    this.producto.imgref = newref;
+    this.productos.editarproducto(this.producto, this.id_producto); //Se actualiza las ref a la img
+    this.productos.getproductos();
   }
 
 }

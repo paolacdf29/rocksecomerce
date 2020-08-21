@@ -16,7 +16,7 @@ export class PagosComponent implements OnInit {
   }
 
   finalizarPago(){
-    if(this.ref != ''){
+    if(this.ref != '' && this.ref.length > 3){
       this.carrito.enviarOrden(this.ref)
     }
   }

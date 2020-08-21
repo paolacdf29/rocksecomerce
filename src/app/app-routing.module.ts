@@ -8,6 +8,8 @@ import { CarritoComponent } from './pages/carrito/carrito.component';
 import { LoginComponent } from './pages/login/login.component';
 import { PagosComponent } from './pages/pagos/pagos.component';
 import { TrackerComponent } from './pages/tracker/tracker.component';
+import { AdminctrlGuard } from './guards/adminctrl.guard';
+import { InfoComponent } from './pages/info/info.component';
 
 
 const routes: Routes = [
@@ -20,7 +22,13 @@ const routes: Routes = [
   {path: 'pagos', component: PagosComponent},
   {path: 'tracker', component: TrackerComponent},
   {path: 'tracker/:id', component: TrackerComponent},
-  {path: 'admin', loadChildren: () => import('./pages/admin/admin.module').then( m => m.AdminModule)},
+  {path: 'info', component: InfoComponent},
+
+  {
+   path: 'admin',
+   loadChildren: () => import('./pages/admin/admin.module').then( m => m.AdminModule),
+   canLoad: [AdminctrlGuard]
+  },
   {path: '', component: HomeComponent},
   {path: '**', component: HomeComponent}
 ];

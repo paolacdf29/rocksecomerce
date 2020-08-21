@@ -18,8 +18,7 @@
       </div>
     </div>
 
-    <div class="row tienda-container"  data-aos-delay="150">
-      
+    <div class="row tienda-container"  data-aos-delay="150" *ngIf='productosSer.productoscargados'>
       <div class="col-lg-4 col-md-6 tienda-item border"
             *ngFor='let item of this.productosSer.productosdisp | filtro: filtroCategoria: "categoria"; let i = index'>
         <img [src]="item.data().img" class="img-fluid muestra" [alt]="item.data().nombre" data-toggle="modal" data-target="#bigImg" (click)="showModal(template)">
@@ -42,8 +41,15 @@
             </div>   
         </ng-template>
       </div>
-
     </div>
 
+    <div class="row justify-content-center" *ngIf='!productosSer.productoscargados'>
+      <div class="col-1">
+        <div class="spinner-border" role="status"  >
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+    </div>
+    
   </div>
 </section>

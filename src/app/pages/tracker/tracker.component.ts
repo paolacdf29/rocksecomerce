@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OrdenesService } from '../../services/ordenes.service';
 import { ActivatedRoute } from '@angular/router';
+import { FireService } from '../../services/fire.service';
 
 
 @Component({
@@ -20,9 +21,11 @@ export class TrackerComponent implements OnInit {
       msj: 'Felicidades! tu pedido ha sido recibido con exito, recuerda guardar el ID para hacerle seguimiento'
     }
   ];
+  userO: any;
 
   constructor(private ordenSrvc: OrdenesService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private fireAuth: FireService) { }
 
   ngOnInit() {
     if(this.route.snapshot.params.id){
@@ -30,6 +33,13 @@ export class TrackerComponent implements OnInit {
       this.nuevo = true;
       this.buscame();
     }
+
+    if(this.fireAuth.auth.auth.currentUser){
+      const uid = this.fireAuth.auth.auth.currentUser.uid;
+      console.log('holi')
+      this.userO = this.ordenSrvc.getUserOrders(uid);
+    }
+    console.log(this.userO);
   }
 
   buscame(){
