@@ -17,18 +17,26 @@
     </div>
 
     <div class="row muestraProducto border shadow">
-        <div class="col-lg-4 col-sm-12">
-            <div class="producto border" 
+        <div class="col-lg-5 col-sm-12">
+            <div class="producto border " 
                  *ngFor='let item of this.prodServ.productosdisp | slice:0:3; let i = index'>
-                <img [src]="item.data().img" [alt]="item.data().nombre">
-                <div class="infoProducto">
-                    <h5>{{item.data().nombre}}</h5>
-                    <p><i class="fas fa-tag"></i>{{item.data().precio}} ARS</p>
-                    <button class="btn btn-dark" routerLink='/producto/{{i}}'>Comprar</button>
+                <div class="row caja align-items-center">
+                    <div class="col-8">
+                        <img [src]="item.data().img" [alt]="item.data().nombre">
+
+                    </div>
+                    <div class="col-4">
+                        <div class="infoProducto">
+                            <h5>{{item.data().nombre}}</h5>
+                            <p><i class="fas fa-tag"></i>{{item.data().precio}} ARS</p>
+                            <button class="btn btn-dark" routerLink='/producto/{{i}}'>Comprar</button>
+                        </div>
+                    </div>
                 </div>
+                
             </div>
         </div>
-        <div class="col-lg-8 col-sm-12 modelo m-auto">
+        <div class="col-lg-7 col-sm-12 modelo m-auto">
             <img src="assets/img/promo1.jpg" alt="Productos Top">
         </div>
     </div>

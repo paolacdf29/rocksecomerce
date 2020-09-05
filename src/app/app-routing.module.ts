@@ -12,6 +12,7 @@ import { AdminctrlGuard } from './guards/adminctrl.guard';
 import { InfoComponent } from './pages/info/info.component';
 
 
+
 const routes: Routes = [
   {path: 'tienda', component: ShopComponent},
   {path: 'contacto', component: ContactoComponent},
@@ -22,8 +23,7 @@ const routes: Routes = [
   {path: 'pagos', component: PagosComponent},
   {path: 'tracker', component: TrackerComponent},
   {path: 'tracker/:id', component: TrackerComponent},
-  {path: 'info', component: InfoComponent},
-
+  {path: 'info', component: InfoComponent}, 
   {
    path: 'admin',
    loadChildren: () => import('./pages/admin/admin.module').then( m => m.AdminModule),

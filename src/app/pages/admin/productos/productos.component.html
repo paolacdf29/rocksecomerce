@@ -8,7 +8,7 @@
     <div class="card-header">
         <span> Nombre del producto: {{item.data().nombre}} </span>
 
-        <a (click)="productoSer.eliminarproducto(item.id)"><i class="fas fa-trash"></i></a>
+        <a (click)="eliminarprod(item.id, item.data().imgref)"><i class="fas fa-trash"></i></a>
         <br>
         <a routerLink='/admin/detalles-productos/{{i}}'><i class="far fa-edit"></i></a>
     </div>

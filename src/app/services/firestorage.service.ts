@@ -22,21 +22,24 @@ export class FirestorageService {
     return imgUrl
   }
 
-  agregarImg(img: File, docnombre: string, oldImg: string){
-    console.log(oldImg);
-    console.log(docnombre);
+  agregarImg(img: File, docnombre: string, oldImg: string, pid: string){
     if(oldImg != ''){
       this.eliminarimg(oldImg);
     }
     const storageRef = this.storage.ref('productos').child(docnombre);
     storageRef.put(img);
-    let url;
-    storageRef.getDownloadURL()
-      .subscribe(info =>{
-        console.log(info);
-        url = info;
-      });
-    return url
+    
+    
+    storageRef.getDownloadURL().subscribe((inf) => {
+      const data = {
+        imgref: docnombre,
+        img: inf
+      };
+
+      this.productosSer.editarproducto(data, pid);
+    });
+
+  
   }
 
   async eliminarimg(imgref: string){

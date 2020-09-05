@@ -17,7 +17,11 @@ export class AdminctrlGuard implements CanLoad {
     const infotienda = this.tienda.tiendaInfo;
     const user = this.fire.tempUser;
     //if(this.tienda.tiendaInfo.admin == this.fire.getUserId()){
-    if(user.username == infotienda.admin && user.pass ==infotienda.pass){
+    if(!user){
+      this.router.navigateByUrl('login');
+    }
+
+    if(user.username == infotienda.admin && user.pass == infotienda.pass){
       console.log('El usuario es el admin');
       this.fire.usuarioVerificado = true;
       return true;

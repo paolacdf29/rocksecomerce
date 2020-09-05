@@ -53,7 +53,7 @@ export class ProductosService {
     return this.productosdisp[pid].id;
   }
 
-  async editarproducto(producto: producto, pid: string){
+  async editarproducto(producto: any, pid: string){
       const productoRef = this.firebase.collection('productos').doc(pid);
       const res = productoRef.set(producto, {merge: true});
       console.log(res);
@@ -61,6 +61,7 @@ export class ProductosService {
 
   async agregarproducto(producto: producto){
     const res = this.firebase.collection('productos').add(producto);
+    return (await res).id
   }
 
   async cambiarestado(pid: string, nuevoEstado){
@@ -72,7 +73,7 @@ export class ProductosService {
   async eliminarproducto(pid: string){
     const eliminado = this.firebase.collection('productos').doc(pid).delete();
     console.log(eliminado);
-    this.router.navigateByUrl('/admin/producto')
+    this.router.navigateByUrl('/admin');
   }
 
 }

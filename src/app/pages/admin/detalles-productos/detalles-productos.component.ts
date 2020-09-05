@@ -23,6 +23,8 @@ export class DetallesProductosComponent implements OnInit {
   productoImg: File;
   imgExtencion: string;
   id_producto: string = '';
+  newref: string;
+  loading: boolean = true;
 
   constructor(private productos: ProductosService,
               private firestorage: FirestorageService,
@@ -38,23 +40,31 @@ export class DetallesProductosComponent implements OnInit {
 
   }
 
-  enviarproducto(){
+  async enviarproducto(){
     if(this.id_producto == ''){
-      this.productos.agregarproducto(this.producto)
+      this.id_producto = await this.productos.agregarproducto(this.producto);
+      this.subirimg()
     }else{
       this.productos.editarproducto(this.producto, this.id_producto);
+      this.subirimg()
     }
-    this.router.navigateByUrl('/admin/productos');
+    this.productos.getproductos()
+    this.router.navigateByUrl('/admin');
+  
   }
 
-  subirimg(evento){
+  prepararImg(evento){
+    this.loading = false
     this.productoImg = evento.target.files[0]; //Esto contiene la imagen
     this.imgExtencion =  evento.target.files[0].type.split('/')[1]; //Extencion de la imagen
-    const newref = this.id_producto + '.' + this.imgExtencion; //Nombre que tendra la imagen
-    this.producto.img = this.firestorage.agregarImg(this.productoImg, newref, this.producto.imgref); //Sube la imagen y almacena el url
-    this.producto.imgref = newref;
-    this.productos.editarproducto(this.producto, this.id_producto); //Se actualiza las ref a la img
-    this.productos.getproductos();
+    setTimeout(() =>{
+      this.loading = true;
+    }, 3000);
+  }
+
+  async subirimg(){
+    this.newref = this.id_producto + '.' + this.imgExtencion; //Nombre que tendra la imagen
+    this.firestorage.agregarImg(this.productoImg, this.newref, this.producto.imgref, this.id_producto); //Sube la imagen y almacena el url
   }
 
 }

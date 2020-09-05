@@ -41,22 +41,26 @@
     }
 
     .producto{
-        margin: 0 0 10px 0;
-        padding: 0 0 0 10px;
-        position: relative;
-
-        img{
-            object-fit: cover;
-            width: 60%;
-            height: 200px;
-            position: relative;
-        }
-
-        .infoProducto{
-            position: absolute;
-            bottom: 8px;
-            right: 5px;
-            padding: 10px;
+        //position: relative;
+        .caja{
+            margin: 0 0 10px 0;
+            padding: 0 0 0 10px;
+            height: 220px;
+            img{
+                object-fit: cover;
+                width: 100%;
+                padding: 2px 0 2px 0;
+                max-height: 90%;
+                // position: relative;
+            }
+    
+            .infoProducto{
+                //position: absolute;
+                //bottom: 8px;
+                //right: 5px;
+                padding: 0;
+                overflow: hidden;
+            }
         }
 
     }
