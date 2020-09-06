@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
+  registro: boolean = false;
   googleUser: any;
   user: any = {
     username: '',
@@ -34,7 +35,17 @@ export class LoginComponent implements OnInit {
   }
 
   loginUser(){
-    this.fireService.tempUser = this.user;
+    this.googleUser = this.fireService.normalLogin(this.user.username, this.user.pass);
     this.router.navigateByUrl('/admin');
   }
+  
+  activaRegistro(){
+    this.registro = !this.registro
+  }
+
+  registrar(){
+    this.fireService.registraUsuario(this.user.username, this.user.password);
+  }
+
+
 }

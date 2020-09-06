@@ -15,13 +15,14 @@ export class AdminctrlGuard implements CanLoad {
 
   canLoad(): Observable<boolean> | Promise<boolean> | boolean {
     const infotienda = this.tienda.tiendaInfo;
-    const user = this.fire.tempUser;
-    //if(this.tienda.tiendaInfo.admin == this.fire.getUserId()){
+    const user = this.fire.fireauth.auth.currentUser;
+    
     if(!user){
       this.router.navigateByUrl('login');
     }
 
-    if(user.username == infotienda.admin && user.pass == infotienda.pass){
+
+    if(user.uid == infotienda.admin){
       console.log('El usuario es el admin');
       this.fire.usuarioVerificado = true;
       return true;

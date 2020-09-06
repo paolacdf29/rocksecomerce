@@ -34,8 +34,8 @@ export class TrackerComponent implements OnInit {
       this.buscame();
     }
 
-    if(this.fireAuth.auth.auth.currentUser){
-      const uid = this.fireAuth.auth.auth.currentUser.uid;
+    if(this.fireAuth.fireauth.auth.currentUser){
+      const uid = this.fireAuth.fireauth.auth.currentUser.uid;
       console.log('holi')
       this.userO = this.ordenSrvc.getUserOrders(uid);
     }

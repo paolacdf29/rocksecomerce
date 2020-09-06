@@ -1,15 +1,24 @@
 <div class="container">
-    <section *ngIf='!this.fireService.auth.auth.currentUser' >
+    <section *ngIf='!this.fireService.fireauth.auth.currentUser' >
     <div class="row justify-content-center align-items-center my-5">
         <div class="col-lg-4 col-sm-12">
+            <h3 class='text-center mb-5' *ngIf='!registro'>Inicio de sesión</h3>
+            <h3 class='text-center mb-5' *ngIf='registro'>Registro de usuario</h3>
             <form>
-                <input type="text" class="form-control mb-1" placeholder="Nombre de usuario" name='username' [(ngModel)]="user.username">
+                <input type="text" class="form-control mb-1" placeholder="Correo" name='username' [(ngModel)]="user.username">
                 <input type="password" class="form-control mb-1" placeholder="Clave" name='password' [(ngModel)]="user.pass">
-                <alert type="warning" *ngIf='this.fireService.usuarioVerificado'>
-                   Usuario o clave incorrectas.
+
+                <alert type="warning" *ngIf='this.fireService.errormsj'>
+                   {{this.fireService.errormsj}}
                 </alert>
 
-                <button class="btn btn-primary btn-block" (click)="loginUser()">Ingresar</button>
+                <a (click)="activaRegistro()" *ngIf='!registro'><p class="text-muted">Registrarse</p></a>
+                <a (click)="activaRegistro()" *ngIf='registro'><p class="text-muted">Iniciar sesión</p></a>
+
+                <button class="btn btn-primary btn-block mt-3" (click)="loginUser()" *ngIf='!registro'>Ingresar</button>
+                <button class="btn btn-primary btn-block mt-3" (click)="registrar()" *ngIf='registro'>Registrarse</button>
+
+                
             </form>
 
             <button type='button' class="btn btn-primary btn-block mt-5" (click)="loginGoogle()">
@@ -22,12 +31,14 @@
     </div>
     </section>
 
-    <section *ngIf='this.fireService.auth.auth.currentUser'>
+    <section *ngIf='this.fireService.fireauth.auth.currentUser'>
         <div class="row justify-content-center align-items-center my-5">
             <div class="col-3 text-center">
            
                 <h4>
-                    <strong *ngIf='this.googleUser'>{{this.googleUser.given_name}}</strong> tu session esta activa!
+                    <strong *ngIf='this.googleUser'>{{this.googleUser.given_name}}</strong> 
+                    <strong *ngIf='this.googleUser'>{{this.googleUser.given_name}}</strong> 
+                    tu session esta activa!
                 </h4>
               
                 <button type='button' class="btn btn-primary btn-block mt-5" (click)="this.fireService.logOut()">

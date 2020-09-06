@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "test01-c736e"
+  },
+  "targets": {
+    "test01-c736e": {
+      "hosting": {
+        "rocks": [
+          "test01-c736e"
+        ]
+      }
+    }
   }
 }

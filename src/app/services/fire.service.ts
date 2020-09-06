@@ -8,45 +8,66 @@ import { auth } from 'firebase/app';
 })
 export class FireService {
 
-  tempUser: any;
   usuarioVerificado: boolean;
+  errormsj: string;
 
-  constructor(public auth: AngularFireAuth) { }
+  constructor(public fireauth: AngularFireAuth) { }
 
   loginGoogle(){ 
+
     const proveedor = new auth.GoogleAuthProvider
 
-   return this.auth.auth.signInWithPopup(proveedor);
+    return this.fireauth.auth.signInWithPopup(proveedor);
   }
 
   loginWithFb(){
 
-    this.auth.auth.signInWithPopup(new auth.FacebookAuthProvider());
+    this.fireauth.auth.signInWithPopup(new auth.FacebookAuthProvider());
    }
 
   logOut(){
     
-    return this.auth.auth.signOut();
+    return this.fireauth.auth.signOut();
   }
 
   getUserId(){
-    if(!this.auth.auth.currentUser){
+    if(!this.fireauth.auth.currentUser){
       return "no hay user"
     }else{
-      return this.auth.auth.currentUser.uid;
+      return this.fireauth.auth.currentUser.uid;
     }
   }
 
   getuser(){
-    if(!this.auth.auth.currentUser){
+    if(!this.fireauth.auth.currentUser){
       return null
     }else{
       const user = {
-        nombre: this.auth.auth.currentUser.displayName,
-        email: this.auth.auth.currentUser.email,
-        id: this.auth.auth.currentUser.uid
+        nombre: this.fireauth.auth.currentUser.displayName,
+        email: this.fireauth.auth.currentUser.email,
+        id: this.fireauth.auth.currentUser.uid
       }
       return user
     }
+  }
+
+  registraUsuario(mail: string, pass: string){
+    this.fireauth.auth.createUserWithEmailAndPassword(mail, pass)
+      .catch(error => {
+        console.log('Ha ocurrido un error', error.message);
+        this.errormsj = error.message;
+      });
+        
+  }
+
+  normalLogin(mail: string, pass: string){
+    this.fireauth.auth.signInWithEmailAndPassword(mail, pass)
+        .catch(error =>{
+          console.log(error.message);
+          this.errormsj = error.message;
+        })
+
+    return this.getuser();
+
   }
 }

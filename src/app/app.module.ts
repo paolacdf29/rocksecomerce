@@ -28,14 +28,13 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { AlertModule } from 'ngx-bootstrap/alert';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
-
-import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth'
-import { AngularFirestoreModule} from 'angularfire2/firestore'
-import { AngularFireStorageModule } from 'angularfire2/storage'
-import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule, AngularFireAuth } from '@angular/fire/auth'
+import { AngularFirestoreModule} from '@angular/fire/firestore'
+import { AngularFireStorageModule } from '@angular/fire/storage'
+import { AngularFireModule } from '@angular/fire';
 
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { InfoComponent } from './pages/info/info.component'
+import { InfoComponent } from './pages/info/info.component';
 
 
 
