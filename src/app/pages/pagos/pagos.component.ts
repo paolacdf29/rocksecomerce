@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CarritoService } from '../../services/carrito.service';
+import { TiendaService } from '../../services/tienda.service';
 
 @Component({
   selector: 'app-pagos',
@@ -10,7 +11,8 @@ export class PagosComponent implements OnInit {
 
   ref: string = ''; 
 
-  constructor(public carrito: CarritoService) { }
+  constructor(public carrito: CarritoService,
+              public tienda: TiendaService) { }
 
   ngOnInit() {
   }

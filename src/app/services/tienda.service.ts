@@ -25,9 +25,8 @@ export class TiendaService {
   }
 
   editarInfo(){
-    console.log(this.tiendaInfo);
     const tiendaRef = this.firestore.collection('tienda').doc('1');
     const res = tiendaRef.set(this.tiendaInfo, {merge: true});
-    console.log(res)
+  
   }
 }
